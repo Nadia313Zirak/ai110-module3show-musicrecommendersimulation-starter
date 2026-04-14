@@ -29,6 +29,39 @@ Some prompts to answer:
 
 You can include a simple diagram or bullet list if helpful.
 
+*ANS*
+- Real-world recommendation systems use data about items and users to predict what a person may like next. In music platforms, this can include song features, listening history, and patterns from many users. My simplified version uses a content-based approach, meaning it compares a user’s preferences directly to song attributes. The system will prioritize genre, mood, energy, valence, and tempo to calculate a weighted score for each song, then rank songs from highest to lowest score to generate recommendations.
+
+-Song features used in the simulation:
+  genre
+  mood
+  energy
+  valence
+  tempo_bpm
+
+  UserProfile features used in the simulation:
+  preferred_genre
+  preferred_mood
+  preferred_energy
+  preferred_valence
+  preferred_tempo_bpm
+
+My recommender system uses a simple content-based approach. It compares a user profile to each song in songs.csv using selected features such as genre, mood, energy, valence, and tempo. Each song receives a weighted score based on how well it matches the user’s preferences. After all songs are scored, the system ranks them from highest to lowest and returns the top recommendations.
+
+Algorithm Recipe
++2.0 points for a genre match
++1.0 point for a mood match
+similarity score based on closeness to target energy
+similarity score based on closeness to target valence
+similarity score based on closeness to target tempo
+rank all songs by total score
+return the top K songs
+
+Potential Bias:
+This system might over-prioritize genre and mood, which could cause it to miss songs from other genres that still match the user’s overall vibe. It also depends only on song attributes and does not consider lyrics, artist preference, or changing user tastes.
+
+
+
 ---
 
 ## Getting Started
@@ -209,3 +242,4 @@ A few sentences about what you learned:
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
 
+SCRENNSHOT OF RECOMMENDATION OUTPUT - ![alt text](image.png)
