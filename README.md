@@ -131,7 +131,7 @@ Read and complete `model_card.md`:
 
 Write 1 to 2 paragraphs here about what you learned:
 
-- about how recommenders turn data into predictions
+- about how recommenders turn data into predictioans
 - about where bias or unfairness could show up in systems like this
 
 
@@ -242,4 +242,7 @@ A few sentences about what you learned:
 - How did building this change how you think about real music recommenders
 - Where do you think human judgment still matters, even if the model seems "smart"
 
-SCRENNSHOT OF RECOMMENDATION OUTPUT - ![alt text](image.png)
+SCRENNSHOT OF RECOMMENDATION OUTPUT - ![alt text](RECOMMENDATION SCREENSHOT.png)
+Screenshot of profile recommenation - ![alt text](Profile recemmendation 1.png)
+Screenshot of profile recommenation - ![alt text](Profile recommendation 2.png)
+Screenshot of profile recommenation - ![alt text](Profile recemmendation 3.png)

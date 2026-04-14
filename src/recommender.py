@@ -36,9 +36,10 @@ def _score_song_object(user: UserProfile, song: Song) -> Tuple[float, str]:
         score += 2.0
         reasons.append("genre match (+2.0)")
 
-    if song.mood.lower() == user.favorite_mood.lower():
-        score += 1.0
-        reasons.append("mood match (+1.0)")
+    # Phase 4 experiment: mood match temporarily removed
+    # if song.mood.lower() == user.favorite_mood.lower():
+    #     score += 1.0
+    #     reasons.append("mood match (+1.0)")
 
     energy_score = 1 - abs(song.energy - user.target_energy)
     score += energy_score
@@ -113,9 +114,10 @@ def recommend_songs(user_prefs: Dict, songs: List[Dict], k: int = 5) -> List[Tup
             score += 2.0
             reasons.append("genre match (+2.0)")
 
-        if song["mood"].lower() == user_prefs["favorite_mood"].lower():
-            score += 1.0
-            reasons.append("mood match (+1.0)")
+        # Phase 4 experiment: mood match temporarily removed
+        # if song["mood"].lower() == user_prefs["favorite_mood"].lower():
+        #     score += 1.0
+        #     reasons.append("mood match (+1.0)")
 
         energy_score = 1 - abs(song["energy"] - user_prefs["target_energy"])
         score += energy_score

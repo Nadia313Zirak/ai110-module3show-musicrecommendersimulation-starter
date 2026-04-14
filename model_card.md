@@ -2,110 +2,52 @@
 
 ## 1. Model Name  
 
-Give your model a short, descriptive name.  
-Example: **VibeFinder 1.0**  
+**VibeFinder 1.0**
 
 ---
 
 ## 2. Intended Use  
 
-Describe what your recommender is designed to do and who it is for. 
-
-Prompts:  
-
-- What kind of recommendations does it generate  
-- What assumptions does it make about the user  
-- Is this for real users or classroom exploration  
+This recommender system is designed to suggest songs based on a user’s preferences, such as genre, mood, energy, and acousticness. It assumes that users have consistent taste and that their preferences can be represented using a few key features. This model is intended for classroom exploration and learning, not for real-world deployment.
 
 ---
 
 ## 3. How the Model Works  
 
-Explain your scoring approach in simple language.  
-
-Prompts:  
-
-- What features of each song are used (genre, energy, mood, etc.)  
-- What user preferences are considered  
-- How does the model turn those into a score  
-- What changes did you make from the starter logic  
-
-Avoid code here. Pretend you are explaining the idea to a friend who does not program.
+The model compares user preferences to song attributes and assigns each song a score. It uses features such as genre, mood, energy, and acousticness. If a song matches the user’s preferred genre, it receives a higher score. Additional points are given based on how close the song’s energy level is to the user’s target energy. The model also considers whether the user prefers acoustic or non-acoustic songs. After calculating scores for all songs, it ranks them and returns the top recommendations.
 
 ---
 
 ## 4. Data  
 
-Describe the dataset the model uses.  
-
-Prompts:  
-
-- How many songs are in the catalog  
-- What genres or moods are represented  
-- Did you add or remove data  
-- Are there parts of musical taste missing in the dataset  
+The model uses a small dataset of songs stored in a CSV file. The dataset includes attributes such as genre, mood, energy, tempo, valence, danceability, and acousticness. Additional songs were added to increase diversity across genres and moods. However, the dataset is still limited and does not include features like lyrics, artist popularity, or user listening history.
 
 ---
 
 ## 5. Strengths  
 
-Where does your system seem to work well  
-
-Prompts:  
-
-- User types for which it gives reasonable results  
-- Any patterns you think your scoring captures correctly  
-- Cases where the recommendations matched your intuition  
+The system works well for clearly defined user profiles. For example, the Chill Lofi profile correctly recommended calm, low-energy, and acoustic songs such as *Library Rain* and *Focus Flow*. The scoring logic captures basic musical preferences like energy level and acoustic style, which helps generate reasonable recommendations.
 
 ---
 
-## 6. Limitations and Bias 
+## 6. Limitations and Bias  
 
-Where the system struggles or behaves unfairly. 
-
-Prompts:  
-
-- Features it does not consider  
-- Genres or moods that are underrepresented  
-- Cases where the system overfits to one preference  
-- Ways the scoring might unintentionally favor some users  
+This recommender has a few limitations. One weakness I discovered is that when mood is removed or underweighted, the system can recommend songs that match the energy level but not the emotional vibe the user may actually want. For example, *Gym Hero* appeared near the top for more than one profile because energy and acousticness had a strong effect on the final score. The system also depends on a small dataset, which limits variety and can make certain songs appear repeatedly. Because of this, the model may create a narrow recommendation pattern instead of showing a wider range of relevant songs.
 
 ---
 
 ## 7. Evaluation  
 
-How you checked whether the recommender behaved as expected. 
-
-Prompts:  
-
-- Which user profiles you tested  
-- What you looked for in the recommendations  
-- What surprised you  
-- Any simple tests or comparisons you ran  
-
-No need for numeric metrics unless you created some.
+I tested the recommender with three profiles: **High-Energy Pop**, **Chill Lofi**, and **Deep Intense Rock**. The results mostly made sense based on the selected features. For example, the Chill Lofi profile strongly favored low-energy and acoustic songs like *Library Rain*, *Focus Flow*, and *Midnight Coding*, which felt correct. One surprise was that after removing the mood feature, songs like *Gym Hero* still ranked highly even when the mood did not match. This showed that the recommender became more dependent on genre, energy, and acousticness than on emotional vibe.
 
 ---
 
 ## 8. Future Work  
 
-Ideas for how you would improve the model next.  
-
-Prompts:  
-
-- Additional features or preferences  
-- Better ways to explain recommendations  
-- Improving diversity among the top results  
-- Handling more complex user tastes  
+In the future, the model could be improved by adding more features such as lyrics, artist preferences, and listening history. It could also improve diversity by reducing the weight of genre so that songs from different genres but similar vibes are recommended. Another improvement would be better explanations for recommendations to make them more understandable to users.
 
 ---
 
 ## 9. Personal Reflection  
 
-A few sentences about your experience.  
-
-Prompts:  
-
-- What you learned about recommender systems  
-- Something unexpected or interesting you discovered  
-- How this changed the way you think about music recommendation apps  
+Through this project, I learned how recommendation systems use simple rules and features to predict what users might like. One interesting discovery was how strongly certain features, like energy, can influence results even when other features are missing. This made me realize that real-world recommendation systems are much more complex and need to balance many factors to avoid bias and repetition.
