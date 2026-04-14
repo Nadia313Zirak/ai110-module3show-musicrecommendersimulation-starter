@@ -1,53 +1,46 @@
-# 🎧 Model Card: Music Recommender Simulation
+# 🎧 Model Card: VibeFinder 1.0
 
-## 1. Model Name  
-
-**VibeFinder 1.0**
-
----
-
-## 2. Intended Use  
-
-This recommender system is designed to suggest songs based on a user’s preferences, such as genre, mood, energy, and acousticness. It assumes that users have consistent taste and that their preferences can be represented using a few key features. This model is intended for classroom exploration and learning, not for real-world deployment.
+## Model Name
+VibeFinder 1.0
 
 ---
 
-## 3. How the Model Works  
-
-The model compares user preferences to song attributes and assigns each song a score. It uses features such as genre, mood, energy, and acousticness. If a song matches the user’s preferred genre, it receives a higher score. Additional points are given based on how close the song’s energy level is to the user’s target energy. The model also considers whether the user prefers acoustic or non-acoustic songs. After calculating scores for all songs, it ranks them and returns the top recommendations.
-
----
-
-## 4. Data  
-
-The model uses a small dataset of songs stored in a CSV file. The dataset includes attributes such as genre, mood, energy, tempo, valence, danceability, and acousticness. Additional songs were added to increase diversity across genres and moods. However, the dataset is still limited and does not include features like lyrics, artist popularity, or user listening history.
+## Goal / Task
+This recommender suggests songs based on a user’s preferences such as genre, mood, energy, and acousticness. It tries to predict which songs a user would enjoy based on how similar they are to the user’s taste profile.
 
 ---
 
-## 5. Strengths  
-
-The system works well for clearly defined user profiles. For example, the Chill Lofi profile correctly recommended calm, low-energy, and acoustic songs such as *Library Rain* and *Focus Flow*. The scoring logic captures basic musical preferences like energy level and acoustic style, which helps generate reasonable recommendations.
-
----
-
-## 6. Limitations and Bias  
-
-This recommender has a few limitations. One weakness I discovered is that when mood is removed or underweighted, the system can recommend songs that match the energy level but not the emotional vibe the user may actually want. For example, *Gym Hero* appeared near the top for more than one profile because energy and acousticness had a strong effect on the final score. The system also depends on a small dataset, which limits variety and can make certain songs appear repeatedly. Because of this, the model may create a narrow recommendation pattern instead of showing a wider range of relevant songs.
+## Data Used
+The model uses a small dataset of songs stored in a CSV file. The dataset includes features like genre, mood, energy, tempo, valence, danceability, and acousticness. I added extra songs to increase variety, but the dataset is still limited and does not include things like lyrics, artist popularity, or user listening history.
 
 ---
 
-## 7. Evaluation  
-
-I tested the recommender with three profiles: **High-Energy Pop**, **Chill Lofi**, and **Deep Intense Rock**. The results mostly made sense based on the selected features. For example, the Chill Lofi profile strongly favored low-energy and acoustic songs like *Library Rain*, *Focus Flow*, and *Midnight Coding*, which felt correct. One surprise was that after removing the mood feature, songs like *Gym Hero* still ranked highly even when the mood did not match. This showed that the recommender became more dependent on genre, energy, and acousticness than on emotional vibe.
-
----
-
-## 8. Future Work  
-
-In the future, the model could be improved by adding more features such as lyrics, artist preferences, and listening history. It could also improve diversity by reducing the weight of genre so that songs from different genres but similar vibes are recommended. Another improvement would be better explanations for recommendations to make them more understandable to users.
+## Algorithm Summary
+The model compares each song to the user’s preferences and assigns a score. Songs get extra points if the genre matches. It also adds points when the song’s energy level is close to the user’s target energy. The model considers whether the user prefers acoustic or non-acoustic songs. After scoring all songs, it ranks them and returns the top results.
 
 ---
 
-## 9. Personal Reflection  
+## Observed Behavior / Biases
+One issue I noticed is that the system can favor certain songs too much based on a few features. For example, *Gym Hero* appeared in multiple profiles because it matched energy and acousticness well. When the mood feature was removed, the recommendations became less accurate and focused more on energy than emotional vibe. The small dataset also limits variety and can cause repeated recommendations.
 
-Through this project, I learned how recommendation systems use simple rules and features to predict what users might like. One interesting discovery was how strongly certain features, like energy, can influence results even when other features are missing. This made me realize that real-world recommendation systems are much more complex and need to balance many factors to avoid bias and repetition.
+---
+
+## Evaluation Process
+I tested the recommender using three different profiles: High-Energy Pop, Chill Lofi, and Deep Intense Rock. I compared the top recommendations for each and checked whether they matched what I expected. I also ran an experiment where I removed the mood feature to see how it affected the results. This helped me understand how each feature influences the recommendations.
+
+---
+
+## Intended Use and Non-Intended Use
+This system is intended for learning and experimentation with recommendation systems. It shows how basic features can be used to generate suggestions. It is not intended for real-world use because it does not include enough data or advanced logic to handle real user preferences.
+
+---
+
+## Ideas for Improvement
+- Add more features such as lyrics, artist preference, or listening history  
+- Increase dataset size to improve variety  
+- Adjust feature weights to reduce repeated recommendations  
+
+---
+
+## Personal Reflection
+The biggest thing I learned from this project is how simple rules can still create useful recommendations. Even basic features like energy and genre can make the system feel realistic. Using AI tools helped me generate code and ideas quickly, but I still had to double-check the logic and fix errors myself. One surprising part was how removing just one feature, like mood, made the system less accurate. If I continued this project, I would focus on adding more features and improving how the system balances different preferences.
